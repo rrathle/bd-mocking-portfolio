@@ -57,21 +57,14 @@ class StockExchangeClientTest {
     }
 
     @Test
-    void submitBuy_existingStock_returnsPrice() throws NonExistentStockException {
+    void getPrice_nonExistentStock_returnsNull() {
         // GIVEN
-        int quantity = 3;
-        BuyStockResponse response = BuyStockResponse.builder()
-            .withSymbol(existingStockSymbol)
-            .withQuantity(quantity)
-            .withPrice(currentExistingStockPrice.multiply(BigDecimal.valueOf(quantity)))
-            .build();
-        when(stockExchange.bid(any(BuyStockRequest.class))).thenReturn(response);
 
         // WHEN
-        BigDecimal price = client.submitBuy(existingStock, quantity);
+        BigDecimal price = client.getPrice(nonExistentStock);
 
         // THEN
-        assertEquals(currentExistingStockPrice.multiply(BigDecimal.valueOf(quantity)), price);
+        assertNull(price);
     }
 
     @Test

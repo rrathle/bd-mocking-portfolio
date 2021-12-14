@@ -26,7 +26,7 @@ class PortfolioTest {
 
         // THEN
         assertEquals(1, stocks.size());
-        assertEquals(quantityToAdd, portfolio.getStocks().get(stockToAdd));
+        assertEquals(quantityToAdd, stocks.get(stockToAdd));
     }
 
     @Test
@@ -72,7 +72,7 @@ class PortfolioTest {
         portfolio.removeStocks(stockInPortfolio, quantity);
 
         // THEN
-        assertNull(portfolio.getStocks().get(stockInPortfolio));
+        assertNull(stocks.get(stockInPortfolio));
     }
 
     @Test
@@ -90,7 +90,7 @@ class PortfolioTest {
         portfolio.removeStocks(stockInPortfolio, quantity - quantityToRemain);
 
         // THEN
-        assertEquals(quantityToRemain, portfolio.getStocks().get(stockInPortfolio));
+        assertEquals(quantityToRemain, stocks.get(stockInPortfolio));
     }
 
     @Test
