@@ -57,9 +57,9 @@ class StockExchangeClientTest {
     }
 
     @Test
-    void getPrice_nonExistentStock_returnsNull() {
+    void getPrice_nonExistentStock_returnsNull() throws NonExistentStockException {
         // GIVEN
-
+        when(stockExchange.getMarketPrice(nonExistentStockSymbol)).thenThrow(new NonExistentStockException());
         // WHEN
         BigDecimal price = client.getPrice(nonExistentStock);
 
